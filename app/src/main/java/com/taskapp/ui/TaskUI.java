@@ -239,13 +239,7 @@ public class TaskUI {
                 }
 
                 // changeStatusメソッドでタスクステータス更新を実行する
-                if (status.equals("1")) {
-                    taskLogic.changeStatus(Integer.parseInt(code), 1, loginUser);
-                } else if (status.equals("2")) {
-                    taskLogic.changeStatus(Integer.parseInt(code), 2, loginUser);
-                } else {
-                    taskLogic.changeStatus(Integer.parseInt(code), Integer.parseInt(status), loginUser);
-                }
+                taskLogic.changeStatus(Integer.parseInt(code), Integer.parseInt(status), loginUser);
                 flg = false;
 
             } catch (IOException e) {

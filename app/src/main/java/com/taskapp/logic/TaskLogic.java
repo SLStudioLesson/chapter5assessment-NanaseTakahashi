@@ -137,14 +137,16 @@ public class TaskLogic {
             throw appException;
         }
 
+        // 変更用のTaskオブジェクトを生成する
+        Task updateTask = new Task(code, task.getName(), status, task.getRepUser());
         // tasks.csvの該当タスクのステータスを変更後のステータスに更新する
-        taskDataAccess.update(task);
+        taskDataAccess.update(updateTask);
 
         // Logオブジェクトを生成する
             // Statusは変更後のステータス
             // Change_User_Codeは今ログインしてるユーザーコード
             // Change_Dateは今日の日付
-            Log log = new Log(code, loginUser.getCode(), task.getStatus(), LocalDate.now());
+            Log log = new Log(code, loginUser.getCode(), status, LocalDate.now());
         // logs.csvにデータを1件作成する
         logDataAccess.save(log);
         
